@@ -3,6 +3,12 @@ GEN_DIR=common/genproto/orders
 
 PROTO_FILES=$(PROTO_DIR)/orders.proto
 
+run-orders:
+	@go run services/orders/*.go
+
+run-kitchen:
+	@go run services/kitchen/*.go
+
 gen:
 	mkdir -p $(GEN_DIR)
 	protoc \
