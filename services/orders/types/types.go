@@ -3,7 +3,7 @@ package types
 import (
 	"context"
 
-	"github.com/dibyochakraborty/kitchen/common/genproto/orders"
+	"github.com/dibyochakraborty/kitchen/services/common/genproto/orders"
 )
 
 type OrderService interface {

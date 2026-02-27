@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	"github.com/dibyochakraborty/kitchen/common/genproto/orders"
+	"github.com/dibyochakraborty/kitchen/services/common/genproto/orders"
 )
 
 var ordersDb = make([]*orders.Order, 0)

@@ -3,7 +3,7 @@ package handler
 import (
 	"context"
 
-	"github.com/dibyochakraborty/kitchen/common/genproto/orders"
+	"github.com/dibyochakraborty/kitchen/services/common/genproto/orders"
 	"github.com/dibyochakraborty/kitchen/services/orders/types"
 	"google.golang.org/grpc"
 )
