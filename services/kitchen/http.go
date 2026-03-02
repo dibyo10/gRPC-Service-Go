@@ -41,22 +41,20 @@ func (s *httpServer) Run() error {
 			panic("Client error : " + err.Error())
 		}
 
-		o, err:=c.GetOrders(ctx, &orders.GetOrdersRequest{
+		res, err := c.GetOrders(ctx, &orders.GetOrdersRequest{
 			CustomerID: 69,
-			
 		})
 
-		if err!=nil{
+		if err != nil {
 			panic("Client error : " + err.Error())
 		}
-		t:=template.Must(template.New("orders").Parse(ordersTemplate))
+		t := template.Must(template.New("orders").Parse(ordersTemplate))
 
-		nerr := t.Execute(w,o)
+		nerr := t.Execute(w, res.GetOrders())
 
-		if nerr!=nil{
+		if nerr != nil {
 			log.Fatalf("template error: %v", nerr)
 		}
-
 
 	})
 
