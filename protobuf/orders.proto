@@ -6,6 +6,7 @@ option go_package = "github.com/dibyochakraborty/kitchen/common/genproto;orders"
 
 service OrderService {
     rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse){}
+    rpc GetOrders(GetOrdersRequest) returns (GetOrderResponse){}
 }
 
 message Order{
@@ -29,7 +30,7 @@ message CreateOrderResponse{
 }
 
 message GetOrdersRequest{
-    string customerID = 1;
+    int32 customerID = 1;
 }
 
 message GetOrderResponse {

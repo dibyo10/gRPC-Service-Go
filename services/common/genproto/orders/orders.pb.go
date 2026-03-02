@@ -7,12 +7,11 @@
 package orders
 
 import (
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
-
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -196,7 +195,7 @@ func (x *CreateOrderResponse) GetStatus() string {
 
 type GetOrdersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	CustomerID    string                 `protobuf:"bytes,1,opt,name=customerID,proto3" json:"customerID,omitempty"`
+	CustomerID    int32                  `protobuf:"varint,1,opt,name=customerID,proto3" json:"customerID,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -231,11 +230,11 @@ func (*GetOrdersRequest) Descriptor() ([]byte, []int) {
 	return file_orders_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetOrdersRequest) GetCustomerID() string {
+func (x *GetOrdersRequest) GetCustomerID() int32 {
 	if x != nil {
 		return x.CustomerID
 	}
-	return ""
+	return 0
 }
 
 type GetOrderResponse struct {
@@ -304,12 +303,13 @@ const file_orders_proto_rawDesc = "" +
 	"\x06status\x18\x01 \x01(\tR\x06status\"2\n" +
 	"\x10GetOrdersRequest\x12\x1e\n" +
 	"\n" +
-	"customerID\x18\x01 \x01(\tR\n" +
+	"customerID\x18\x01 \x01(\x05R\n" +
 	"customerID\"9\n" +
 	"\x10GetOrderResponse\x12%\n" +
-	"\x06orders\x18\x01 \x03(\v2\r.orders.OrderR\x06orders2X\n" +
+	"\x06orders\x18\x01 \x03(\v2\r.orders.OrderR\x06orders2\x9b\x01\n" +
 	"\fOrderService\x12H\n" +
-	"\vCreateOrder\x12\x1a.orders.CreateOrderRequest\x1a\x1b.orders.CreateOrderResponse\"\x00B<Z:github.com/dibyochakraborty/kitchen/common/genproto;ordersb\x06proto3"
+	"\vCreateOrder\x12\x1a.orders.CreateOrderRequest\x1a\x1b.orders.CreateOrderResponse\"\x00\x12A\n" +
+	"\tGetOrders\x12\x18.orders.GetOrdersRequest\x1a\x18.orders.GetOrderResponse\"\x00B<Z:github.com/dibyochakraborty/kitchen/common/genproto;ordersb\x06proto3"
 
 var (
 	file_orders_proto_rawDescOnce sync.Once
@@ -334,9 +334,11 @@ var file_orders_proto_goTypes = []any{
 var file_orders_proto_depIdxs = []int32{
 	0, // 0: orders.GetOrderResponse.orders:type_name -> orders.Order
 	1, // 1: orders.OrderService.CreateOrder:input_type -> orders.CreateOrderRequest
-	2, // 2: orders.OrderService.CreateOrder:output_type -> orders.CreateOrderResponse
-	2, // [2:3] is the sub-list for method output_type
-	1, // [1:2] is the sub-list for method input_type
+	3, // 2: orders.OrderService.GetOrders:input_type -> orders.GetOrdersRequest
+	2, // 3: orders.OrderService.CreateOrder:output_type -> orders.CreateOrderResponse
+	4, // 4: orders.OrderService.GetOrders:output_type -> orders.GetOrderResponse
+	3, // [3:5] is the sub-list for method output_type
+	1, // [1:3] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
